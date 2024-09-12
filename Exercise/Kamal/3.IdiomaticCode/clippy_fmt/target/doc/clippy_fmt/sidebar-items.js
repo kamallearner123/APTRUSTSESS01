@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["PI"],"fn":["areaCircle","main"],"mod":["mymod","vegs"]};

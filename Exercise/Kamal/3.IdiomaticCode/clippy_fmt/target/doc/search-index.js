@@ -1,0 +1,5 @@
+var searchIndex = new Map(JSON.parse('[\
+["clippy_fmt",{"t":"SHHCCHCSPGFPNNNNNNNNOONNNNNNN","n":["PI","areaCircle","main","mymod","vegs","whole_square","vegs","BURNT_ORANGE","JackOLantern","PrivateEnum","Pumpkin","PumpkinPie","borrow","borrow","borrow_mut","borrow_mut","from","from","into","into","orangeness","roundness","smash","try_from","try_from","try_into","try_into","type_id","type_id"],"q":[[0,"clippy_fmt"],[5,"clippy_fmt::mymod"],[6,"clippy_fmt::vegs"],[7,"clippy_fmt::vegs::vegs"],[29,"core::result"],[30,"core::any"]],"i":[0,0,0,0,0,0,0,0,7,0,0,7,4,7,4,7,4,7,4,7,4,4,4,4,7,4,7,4,7],"f":"`{bb}{{}d}``{{ff}f}``````{ce{}{}}000{cc{}}011``{hd}{c{{j{e}}}{}{}}000{cl{}}0","D":"Ab","p":[[1,"f32"],[1,"unit"],[1,"u32"],[5,"Pumpkin",7],[6,"Result",29],[5,"TypeId",30],[6,"PrivateEnum",7]],"r":[],"b":[],"c":"OjAAAAAAAAA=","e":"OzAAAAEAABQABQAAAAEABAAEAAsAAAANAAMAFQAIAA=="}]\
+]'));
+if (typeof exports !== 'undefined') exports.searchIndex = searchIndex;
+else if (window.initSearch) window.initSearch(searchIndex);

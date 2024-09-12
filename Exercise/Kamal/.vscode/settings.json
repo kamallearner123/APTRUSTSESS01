@@ -1,0 +1,63 @@
+{
+	"rust-analyzer.linkedProjects": [
+		{
+			"sysroot": "",
+			"crates": [
+				{
+					"root_module": "3.IdiomaticCode/fmt_clippy/src/mymod.rs",
+					"display_name": "3",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "3.IdiomaticCode/clippy_fmt/src/main.rs",
+					"display_name": "3",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "3.IdiomaticCode/clippy_fmt/src/mymod.rs",
+					"display_name": "3",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "3.IdiomaticCode/clippy_fmt/src/vegs.rs",
+					"display_name": "3",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "1.Introduction/clippy_fmt/src/main.rs",
+					"display_name": "1",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "1.Introduction/clippy_fmt/src/mymod.rs",
+					"display_name": "1",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "1.Introduction/clippy_fmt/src/vegs.rs",
+					"display_name": "1",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "23.Multithreading/simpleThread.rs",
+					"display_name": "23",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "23.Multithreading/simpleThread_send_recv.rs",
+					"display_name": "23",
+					"edition": "2021",
+					"deps": []
+				}
+			]
+		}
+	]
+}
