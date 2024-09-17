@@ -1,0 +1,14 @@
+[package]
+name = "ids"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+name = "ids_filter"
+path = "src/ids_filter.rs"
+
+[[bin]]
+name = "idsm"
+path = "src/ids_idsm.rs"

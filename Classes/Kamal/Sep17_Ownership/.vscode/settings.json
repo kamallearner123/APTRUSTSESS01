@@ -1,0 +1,27 @@
+{
+	"rust-analyzer.linkedProjects": [
+		{
+			"sysroot": "",
+			"crates": [
+				{
+					"root_module": "ownership_simple_datatypes.rs",
+					"display_name": "ownership_simple_datatypes",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "ownership_complex_dataypes.rs",
+					"display_name": "ownership_complex_dataypes",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "borrow_readonly.rs",
+					"display_name": "borrow_readonly",
+					"edition": "2021",
+					"deps": []
+				}
+			]
+		}
+	]
+}
