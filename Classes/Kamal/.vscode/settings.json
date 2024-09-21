@@ -1,0 +1,51 @@
+{
+	"rust-analyzer.linkedProjects": [
+		{
+			"sysroot": "",
+			"crates": [
+				{
+					"root_module": "Sep20_Copy_Types/Copy_types_01.rs",
+					"display_name": "sep20_copy_types_copy_types_01",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep20_Copy_Types/string_array.rs",
+					"display_name": "sep20_copy_types_string_array",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep20_Copy_Types/Copy_types_struct.rs",
+					"display_name": "sep20_copy_types_copy_types_struct",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep20_References/3.StringReferences/string_reference.rs",
+					"display_name": "sep20_references_3",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep20_References/4.SharedOwnership/basic_rc.rs",
+					"display_name": "sep20_references_4",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep20_References/1. Basic_References/rust_reference_from_fun.rs",
+					"display_name": "sep20_references_1",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep20_References/1. Basic_References/rust_reference_slices.rs",
+					"display_name": "sep20_references_1",
+					"edition": "2021",
+					"deps": []
+				}
+			]
+		}
+	]
+}

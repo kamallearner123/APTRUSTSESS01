@@ -1,0 +1,27 @@
+{
+	"rust-analyzer.linkedProjects": [
+		{
+			"sysroot": "",
+			"crates": [
+				{
+					"root_module": "1. Basic_References/rust_refereces.rs",
+					"display_name": "1",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "2.Box_References/ref_box.rs",
+					"display_name": "2",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "1. Basic_References/global_variable.rs",
+					"display_name": "1",
+					"edition": "2021",
+					"deps": []
+				}
+			]
+		}
+	]
+}

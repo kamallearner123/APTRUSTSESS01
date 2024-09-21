@@ -1,0 +1,20 @@
+Ownership and Borrowing
+Lifetimes
+Pattern Matching
+Zero-Cost Abstractions
+Memory Safety without Garbage Collection
+Traits and Trait Objects
+Concurrency without Data Races
+Algebraic Data Types (Enums and Structs)
+Error Handling with Result and Option
+Type Inference
+Macros (Declarative and Procedural)
+Immutable and Mutable Variables
+Crate and Module System
+Closures and Functional Programming Features
+Asynchronous Programming (Async/Await)
+Safe and Unsafe Code Blocks
+Iterator and Iterator Adapters
+Smart Pointers (Box, Rc, Arc)
+Embedded Programming Support
+Cross-Compilation
