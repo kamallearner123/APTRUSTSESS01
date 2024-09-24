@@ -1,0 +1,3 @@
+rust program to find nearest word for the given word
+
+
