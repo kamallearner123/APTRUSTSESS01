@@ -5,12 +5,9 @@ fn add_tail(data:&mut String) {
 
 fn main() {
     let mut data = String::from("hello");
-    let ref_data:&mut String = &mut data;
-    ref_data.push_str("...added by ref_data");
-    println!("ref_data = {}", ref_data);
-
-    add_tail(&mut data); // data becomes active
-    data.push_str("world");
-    ref_data.push_str("..."); // ERROR: ref_data is inaccessible.
-    println!("data = {}", data);
+    let ref_data1:& String = &data;
+    let ref_data2:& String = &data;
+    let ref_data_write: &mut String = &mut data; //acquired mut ref
+    let ref_data3: &String = &data; // ERROR: till 2018
+    ref_data_write.push_str(".. adding string");//ERROR
 }

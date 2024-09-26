@@ -7,11 +7,17 @@
 //     println!("2.1 + 3.1 = {}", result2);
 // }
 
-// fn main() {
-//     let tax_perc = 0.3; //30%
-//     let calculate_tax = |salary| println!("tax = {}", salary*tax_perc);
-//     calculate_tax(100000.0);
-// }
+
+fn make_fp() -> Fn {
+    let tax_perc = 0.3; //30%
+    let calculate_tax = |salary| println!("tax = {}", salary*tax_perc);
+    return calculate_tax;
+}
+
+fn main() {
+    let fp = make_fp();
+    fp(100000.0);
+}
 
 
 // fn cal_anonymous <T:Fn(f64)>(func:T) {
@@ -26,11 +32,11 @@
 // }
 
 
-fn main() {
-    let calculate_square = |num: i32| -> i32 {
-        num * num
-    };
+// fn main() {
+//     let calculate_square = |num: i32| -> i32 {
+//         num * num
+//     };
 
-    let result = calculate_square(5);  // Closure returns the square of 5
-    println!("Square of 5 is: {}", result);
-}
+//     let result = calculate_square(5);  // Closure returns the square of 5
+//     println!("Square of 5 is: {}", result);
+// }

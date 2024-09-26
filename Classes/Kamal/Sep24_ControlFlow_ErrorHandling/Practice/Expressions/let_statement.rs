@@ -11,6 +11,6 @@ fn main() {
     let Some(last) = b.pop() else { panic!();};
     println!("last = {:?}", last);
 
-    let akhari = b.pop() else {panic!();};
+    let akhari = b.pop();
     println!("Fifth = {:?}", akhari);
 }

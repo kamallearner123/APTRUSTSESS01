@@ -7,3 +7,4 @@ fn main() {
     let array2 = array1; //No issue: No ownership is moved
     println!("array1 = {:?}", array1);
 }
+

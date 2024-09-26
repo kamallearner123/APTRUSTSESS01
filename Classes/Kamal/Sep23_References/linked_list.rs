@@ -12,4 +12,9 @@ fn main() {
     head.next = Some(next);
     println!("{:?}", head.next);
 
+    let back = &head.next;
+
+    let mut next = Box::new(node{data:200, next:None});
+    head.next = Some(next);
+    println!("{:?}", head.next);
 }

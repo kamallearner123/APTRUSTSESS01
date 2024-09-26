@@ -44,6 +44,156 @@
 					"display_name": "sep20_references_1",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "AssigmentPrograms/Solutions/CorrectWord/src/main.rs",
+					"display_name": "assigmentprograms_solutions_correctword_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep23_References/reference_disgree.rs",
+					"display_name": "sep23_references_reference_disgree",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep23_References/linked_list.rs",
+					"display_name": "sep23_references_linked_list",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep23_References/referece_example01.rs",
+					"display_name": "sep23_references_referece_example01",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep23_References/reference_slices.rs",
+					"display_name": "sep23_references_reference_slices",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep23_References/reference_string.rs",
+					"display_name": "sep23_references_reference_string",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/References01.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_references01",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/return_rust.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_return_rust",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/rust_switch_using_Option.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_rust_switch_using_option",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/rust_switch.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_rust_switch",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/Expressions/let_statement.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_expressions_let_statement",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/Enums/Option_ex01.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_enums_option_ex01",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/Enums/search/src/main.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_enums_search_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/AnonymousFuncs/Types_closures.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_anonymousfuncs_types_closures",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/ErroReport/file_read.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_erroreport_file_read",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/tuples.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_tuples",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Practice/some.rs",
+					"display_name": "sep24_controlflow_errorhandling_practice_some",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep24_ControlFlow_ErrorHandling/Assignment/find_smallest_positive_num.rs",
+					"display_name": "sep24_controlflow_errorhandling_assignment_find_smallest_positive_num",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_EnumPatternsModules/match_literal.rs",
+					"display_name": "sep25_enumpatternsmodules_match_literal",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_EnumPatternsModules/touuple.rs",
+					"display_name": "sep25_enumpatternsmodules_touuple",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_EnumPatternsModules/structure.rs",
+					"display_name": "sep25_enumpatternsmodules_structure",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_EnumPatternsModules/array_slice.rs",
+					"display_name": "sep25_enumpatternsmodules_array_slice",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_EnumPatternsModules/reference.rs",
+					"display_name": "sep25_enumpatternsmodules_reference",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_Sep26_EnumPatternsModules/if_let.rs",
+					"display_name": "sep25_sep26_enumpatternsmodules_if_let",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_Sep26_EnumPatternsModules/loop.rs",
+					"display_name": "sep25_sep26_enumpatternsmodules_loop",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}

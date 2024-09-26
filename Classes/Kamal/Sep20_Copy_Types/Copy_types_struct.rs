@@ -1,6 +1,12 @@
-fn main() {
-    let array1 = [1,2,3,4];
-    let array2 = array1; //  No ownership is moved
+#[derive(Debug)]
+struct IdsSensor {
+    id: i32,
+    severity: i8
+}
 
-    println!("array1 = {:?}, array2 = {:?}", array1, array2);
+fn main() {
+    let device1 = IdsSensor{id:1234, severity:0};
+    let device2 = device1;
+
+    print
 }
