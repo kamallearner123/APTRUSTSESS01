@@ -194,6 +194,30 @@
 					"display_name": "sep25_sep26_enumpatternsmodules_loop",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "Sep25_Sep26_EnumPatternsModules/Sep27_Structures_Modules/structures.rs",
+					"display_name": "sep25_sep26_enumpatternsmodules_sep27_structures_modules_structures",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_Sep26_EnumPatternsModules/Sep27_Structures_Modules/traits.rs",
+					"display_name": "sep25_sep26_enumpatternsmodules_sep27_structures_modules_traits",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_Sep26_EnumPatternsModules/Sep27_Structures_Modules/own_traits.rs",
+					"display_name": "sep25_sep26_enumpatternsmodules_sep27_structures_modules_own_traits",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep25_Sep26_EnumPatternsModules/Sep27_Structures_Modules/string.rs",
+					"display_name": "sep25_sep26_enumpatternsmodules_sep27_structures_modules_string",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}
