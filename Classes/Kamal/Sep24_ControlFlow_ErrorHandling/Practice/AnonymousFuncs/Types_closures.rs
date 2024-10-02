@@ -8,7 +8,7 @@
 // }
 
 
-fn make_fp() -> Fn {
+fn <T:Fn(f64)>make_fp() {
     let tax_perc = 0.3; //30%
     let calculate_tax = |salary| println!("tax = {}", salary*tax_perc);
     return calculate_tax;

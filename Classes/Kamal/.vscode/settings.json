@@ -218,6 +218,108 @@
 					"display_name": "sep25_sep26_enumpatternsmodules_sep27_structures_modules_string",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/Modules/auth_service/src/lib.rs",
+					"display_name": "sep30_modules_integeroverflow_modules_auth_service_src_lib",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/Modules/sec_service/sec_service/src/main.rs",
+					"display_name": "sep30_modules_integeroverflow_modules_sec_service_sec_service_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/Modules/sec_service/src/main.rs",
+					"display_name": "sep30_modules_integeroverflow_modules_sec_service_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/Modules/auth_service/src/person/mod.rs",
+					"display_name": "sep30_modules_integeroverflow_modules_auth_service_src_person_mod",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/InlineModules/inline_module.rs",
+					"display_name": "sep30_modules_integeroverflow_inlinemodules_inline_module",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/FileModules/sample/src/main.rs",
+					"display_name": "sep30_modules_integeroverflow_filemodules_sample_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/FileModules/sample/src/math/basic.rs",
+					"display_name": "sep30_modules_integeroverflow_filemodules_sample_src_math_basic",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/FileModules/sample/src/math/mod.rs",
+					"display_name": "sep30_modules_integeroverflow_filemodules_sample_src_math_mod",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/LibAppTogether/idsm/src/lib.rs",
+					"display_name": "sep30_modules_integeroverflow_libapptogether_idsm_src_lib",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/LibAppTogether/idsm/src/main.rs",
+					"display_name": "sep30_modules_integeroverflow_libapptogether_idsm_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/IntegerOverFlow/main.rs",
+					"display_name": "sep30_modules_integeroverflow_integeroverflow_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/Threading/rust_multi_thread.rs",
+					"display_name": "sep30_modules_integeroverflow_threading_rust_multi_thread",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/Oct2_Collections/vector_01.rs",
+					"display_name": "sep30_modules_integeroverflow_oct2_collections_vector_01",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct2_HeapMempry/alloc_delete.rs",
+					"display_name": "oct2_heapmempry_alloc_delete",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct2_BlockChain/block_chain/src/main.rs",
+					"display_name": "oct2_blockchain_block_chain_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct2_BlockChain/block_chain/src/crypto.rs",
+					"display_name": "oct2_blockchain_block_chain_src_crypto",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Sep30_Modules_IntegerOverflow/LibAppTogether/idsm/src/auth/mod.rs",
+					"display_name": "sep30_modules_integeroverflow_libapptogether_idsm_src_auth_mod",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}
