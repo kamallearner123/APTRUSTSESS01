@@ -1,1 +1,0 @@
-searchState.loadedDescShard("clippy_fmt", 0, "History\nDecription about main function\nFor Halloween. To be lit by candlelight.\nFor internal use only. In fact, this documentation is so …\nFor dessert during North American winter holidays.\nReturns the argument unchanged.\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.\nCalls <code>U::from(self)</code>.")

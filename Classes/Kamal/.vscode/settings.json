@@ -320,6 +320,24 @@
 					"display_name": "sep30_modules_integeroverflow_libapptogether_idsm_src_auth_mod",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "Oct2_Crates/rand/rand_example/src/main.rs",
+					"display_name": "oct2_crates_rand_rand_example_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct2_Crates/TcpServerClient/tcpserver/src/main.rs",
+					"display_name": "oct2_crates_tcpserverclient_tcpserver_src_main",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct2_Crates/TcpServerClient/tcpclient/src/main.rs",
+					"display_name": "oct2_crates_tcpserverclient_tcpclient_src_main",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}

@@ -1,7 +1,8 @@
 #[derive(Debug)]
 pub enum AuthError {
     AuthSuccess,
-    AuthError
+    AuthError,
+    AuthUnknown
 }
 
 pub fn verify_authentication(user:&str, pass:&str) -> Result<AuthError, String> {
