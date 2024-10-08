@@ -338,6 +338,12 @@
 					"display_name": "oct2_crates_tcpserverclient_tcpclient_src_main",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "Oct8_AsyncProgramming/Programms/prog1.rs",
+					"display_name": "oct8_asyncprogramming_programms_prog1",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}
