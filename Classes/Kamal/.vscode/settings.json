@@ -344,6 +344,18 @@
 					"display_name": "oct8_asyncprogramming_programms_prog1",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "Oct15_AysncProgramming/Programs/simple_tcp_server.rs",
+					"display_name": "oct15_aysncprogramming_programs_simple_tcp_server",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct15_AysncProgramming/Programs/tcp_client.rs",
+					"display_name": "oct15_aysncprogramming_programs_tcp_client",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}

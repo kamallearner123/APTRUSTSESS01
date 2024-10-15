@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["BURNT_ORANGE"],"enum":["PrivateEnum"],"struct":["Pumpkin"]};
