@@ -25,6 +25,19 @@ void* writer(void* arg) {
     int writer_id = *((int*)arg);
     for (int i = 0; i < 5; ++i) {
         pthread_rwlock_wrlock(&rwlock);  // Acquire write lock
+        /*
+            if (lokc_not_released) {
+                thread_yield();
+            }
+        */
+       
+        spinlock(); 
+        /*
+            while(1) {
+                kernel_check_lock();
+            }        
+        */
+
         shared_data += writer_id;        // Modify shared data
         printf("Writer %d: updated shared_data to %d\n", writer_id, shared_data);
         pthread_rwlock_unlock(&rwlock);  // Release write lock
@@ -32,6 +45,8 @@ void* writer(void* arg) {
     }
     return NULL;
 }
+
+
 
 int main() {
     pthread_t readers[NUM_READERS], writers[NUM_WRITERS];

@@ -1,11 +1,6 @@
 use std::sync::{Arc, RwLock};
 use std::thread;
 
-fn fun() {
-    let mut read_lock = data_clone.read().unwrap(); // Acquire read lock
-    read_lock.push(100);
-    println!("Read: {:?}", *read_lock);
-}
 fn main() {
     // Create a new RwLock protecting a Vec of integers
     let data = Arc::new(RwLock::new(Vec::new()));
@@ -28,12 +23,16 @@ fn main() {
     for _ in 0..5 {
         let data_clone = Arc::clone(&data);
         let handle = thread::spawn(move || {
-            func();
+            let mut read_lock = data_clone.read().unwrap(); // Acquire read lock
+            read_lock.push(100);
+            println!("Read: {:?}", *read_lock);
         });
         handles.push(handle);
     }
 
-        
+    
+
+
     // Wait for all threads to finish
     for handle in handles {
         handle.join().unwrap();
