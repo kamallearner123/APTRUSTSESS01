@@ -356,6 +356,30 @@
 					"display_name": "oct15_aysncprogramming_programs_tcp_client",
 					"edition": "2021",
 					"deps": []
+				},
+				{
+					"root_module": "Sep20_References/1. Basic_References/vector_refrence.rs",
+					"display_name": "sep20_references_1",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "Oct21_Closures/color_inventory.rs",
+					"display_name": "oct21_closures_color_inventory",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "LeetCode/LinkedList/add_numbers.rs",
+					"display_name": "leetcode_linkedlist_add_numbers",
+					"edition": "2021",
+					"deps": []
+				},
+				{
+					"root_module": "LeetCode/General/pow.rs",
+					"display_name": "leetcode_general_pow",
+					"edition": "2021",
+					"deps": []
 				}
 			]
 		}
