@@ -1,6 +1,1732 @@
+==6899== Helgrind, a thread error detector
+==6899== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==6899== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==6899== Command: ./thread_using_arc_mutex
+==6899== 
 Thread 0: [1, 2, 3, 4, 5, 0]
+==6899== ---Thread-Announcement------------------------------------------
+==6899== 
+==6899== Thread #3 was created
+==6899==    at 0x49BF9F3: clone (clone.S:76)
+==6899==    by 0x49C08EE: __clone_internal (clone-internal.c:83)
+==6899==    by 0x492E6D8: create_thread (pthread_create.c:295)
+==6899==    by 0x492F1FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==6899==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x12022E: std::sys::unix::thread::Thread::new (thread.rs:87)
+==6899==    by 0x116E01: std::thread::Builder::spawn_unchecked_ (mod.rs:571)
+==6899==    by 0x1164DD: std::thread::Builder::spawn_unchecked (mod.rs:457)
+==6899==    by 0x11642C: std::thread::spawn (mod.rs:389)
+==6899==    by 0x119C4F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:19)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899== 
+==6899== ---Thread-Announcement------------------------------------------
+==6899== 
+==6899== Thread #2 was created
+==6899==    at 0x49BF9F3: clone (clone.S:76)
+==6899==    by 0x49C08EE: __clone_internal (clone-internal.c:83)
+==6899==    by 0x492E6D8: create_thread (pthread_create.c:295)
+==6899==    by 0x492F1FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==6899==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x12022E: std::sys::unix::thread::Thread::new (thread.rs:87)
+==6899==    by 0x116E01: std::thread::Builder::spawn_unchecked_ (mod.rs:571)
+==6899==    by 0x1164DD: std::thread::Builder::spawn_unchecked (mod.rs:457)
+==6899==    by 0x11642C: std::thread::spawn (mod.rs:389)
+==6899==    by 0x119C4F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:19)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899== 
+==6899== ---Thread-Announcement------------------------------------------
+==6899== 
+==6899== Thread #1 is the program's root thread
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x4AC51E8 by thread #3
+==6899== Locks held: none
+==6899==    at 0x113FF5: alloc::vec::Vec<T,A>::push (mod.rs:1883)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x114082: alloc::vec::Vec<T,A>::push (mod.rs:1889)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==  Address 0x4ac51e8 is 40 bytes inside a block of size 48 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11BCCF: alloc (alloc.rs:98)
+==6899==    by 0x11BCCF: alloc::alloc::Global::alloc_impl (alloc.rs:181)
+==6899==    by 0x11BA36: alloc::alloc::exchange_malloc (alloc.rs:241)
+==6899==    by 0x11B601: new<alloc::sync::ArcInner<std::sync::mutex::Mutex<alloc::vec::Vec<i32, alloc::alloc::Global>>>> (boxed.rs:217)
+==6899==    by 0x11B601: alloc::sync::Arc<T>::new (sync.rs:389)
+==6899==    by 0x11982F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:9)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x115F90: std::rt::lang_start::{{closure}} (rt.rs:167)
+==6899==    by 0x144403: std::panicking::try (function.rs:284)
+==6899==    by 0x13269A: std::rt::lang_start_internal (panic.rs:142)
+==6899==    by 0x115F69: std::rt::lang_start (rt.rs:166)
+==6899==    by 0x119F1D: main (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Block was alloc'd by thread #1
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x4AC51E0 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11400D: capacity<i32, alloc::alloc::Global> (raw_vec.rs:231)
+==6899==    by 0x11400D: alloc::vec::Vec<T,A>::push (mod.rs:1883)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x115214: set_ptr_and_cap<i32, alloc::alloc::Global> (raw_vec.rs:383)
+==6899==    by 0x115214: alloc::raw_vec::RawVec<T,A>::grow_amortized (raw_vec.rs:415)
+==6899==    by 0x1152D7: alloc::raw_vec::RawVec<T,A>::reserve_for_push (raw_vec.rs:302)
+==6899==    by 0x11403B: alloc::vec::Vec<T,A>::push (mod.rs:1884)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x4ac51e0 is 32 bytes inside a block of size 48 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11BCCF: alloc (alloc.rs:98)
+==6899==    by 0x11BCCF: alloc::alloc::Global::alloc_impl (alloc.rs:181)
+==6899==    by 0x11BA36: alloc::alloc::exchange_malloc (alloc.rs:241)
+==6899==    by 0x11B601: new<alloc::sync::ArcInner<std::sync::mutex::Mutex<alloc::vec::Vec<i32, alloc::alloc::Global>>>> (boxed.rs:217)
+==6899==    by 0x11B601: alloc::sync::Arc<T>::new (sync.rs:389)
+==6899==    by 0x11982F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:9)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x115F90: std::rt::lang_start::{{closure}} (rt.rs:167)
+==6899==    by 0x144403: std::panicking::try (function.rs:284)
+==6899==    by 0x13269A: std::rt::lang_start_internal (panic.rs:142)
+==6899==    by 0x115F69: std::rt::lang_start (rt.rs:166)
+==6899==    by 0x119F1D: main (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Block was alloc'd by thread #1
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x4AC51D8 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11404B: ptr<i32, alloc::alloc::Global> (raw_vec.rs:223)
+==6899==    by 0x11404B: as_mut_ptr<i32, alloc::alloc::Global> (mod.rs:1326)
+==6899==    by 0x11404B: alloc::vec::Vec<T,A>::push (mod.rs:1887)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x115211: set_ptr_and_cap<i32, alloc::alloc::Global> (raw_vec.rs:382)
+==6899==    by 0x115211: alloc::raw_vec::RawVec<T,A>::grow_amortized (raw_vec.rs:415)
+==6899==    by 0x1152D7: alloc::raw_vec::RawVec<T,A>::reserve_for_push (raw_vec.rs:302)
+==6899==    by 0x11403B: alloc::vec::Vec<T,A>::push (mod.rs:1884)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x4ac51d8 is 24 bytes inside a block of size 48 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11BCCF: alloc (alloc.rs:98)
+==6899==    by 0x11BCCF: alloc::alloc::Global::alloc_impl (alloc.rs:181)
+==6899==    by 0x11BA36: alloc::alloc::exchange_malloc (alloc.rs:241)
+==6899==    by 0x11B601: new<alloc::sync::ArcInner<std::sync::mutex::Mutex<alloc::vec::Vec<i32, alloc::alloc::Global>>>> (boxed.rs:217)
+==6899==    by 0x11B601: alloc::sync::Arc<T>::new (sync.rs:389)
+==6899==    by 0x11982F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:9)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x115F90: std::rt::lang_start::{{closure}} (rt.rs:167)
+==6899==    by 0x144403: std::panicking::try (function.rs:284)
+==6899==    by 0x13269A: std::rt::lang_start_internal (panic.rs:142)
+==6899==    by 0x115F69: std::rt::lang_start (rt.rs:166)
+==6899==    by 0x119F1D: main (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Block was alloc'd by thread #1
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 4 at 0x4AC55A8 by thread #3
+==6899== Locks held: none
+==6899==    at 0x114077: write<i32> (mod.rs:1400)
+==6899==    by 0x114077: alloc::vec::Vec<T,A>::push (mod.rs:1888)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==  Address 0x4ac55a8 is 24 bytes inside a block of size 40 alloc'd
+==6899==    at 0x484FD53: realloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11C123: realloc (alloc.rs:136)
+==6899==    by 0x11C123: alloc::alloc::Global::grow_impl (alloc.rs:213)
+==6899==    by 0x11C4FF: <alloc::alloc::Global as core::alloc::Allocator>::grow (alloc.rs:266)
+==6899==    by 0x114421: alloc::raw_vec::finish_grow (raw_vec.rs:492)
+==6899==    by 0x115082: alloc::raw_vec::RawVec<T,A>::grow_amortized (raw_vec.rs:414)
+==6899==    by 0x1152D7: alloc::raw_vec::RawVec<T,A>::reserve_for_push (raw_vec.rs:302)
+==6899==    by 0x11403B: alloc::vec::Vec<T,A>::push (mod.rs:1884)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x4AC51E8 by thread #3
+==6899== Locks held: none
+==6899==    at 0x114082: alloc::vec::Vec<T,A>::push (mod.rs:1889)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x114082: alloc::vec::Vec<T,A>::push (mod.rs:1889)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==  Address 0x4ac51e8 is 40 bytes inside a block of size 48 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11BCCF: alloc (alloc.rs:98)
+==6899==    by 0x11BCCF: alloc::alloc::Global::alloc_impl (alloc.rs:181)
+==6899==    by 0x11BA36: alloc::alloc::exchange_malloc (alloc.rs:241)
+==6899==    by 0x11B601: new<alloc::sync::ArcInner<std::sync::mutex::Mutex<alloc::vec::Vec<i32, alloc::alloc::Global>>>> (boxed.rs:217)
+==6899==    by 0x11B601: alloc::sync::Arc<T>::new (sync.rs:389)
+==6899==    by 0x11982F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:9)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x115F90: std::rt::lang_start::{{closure}} (rt.rs:167)
+==6899==    by 0x144403: std::panicking::try (function.rs:284)
+==6899==    by 0x13269A: std::rt::lang_start_internal (panic.rs:142)
+==6899==    by 0x115F69: std::rt::lang_start (rt.rs:166)
+==6899==    by 0x119F1D: main (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Block was alloc'd by thread #1
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177070 by thread #3
+==6899== Locks held: none
+==6899==    at 0x127CC4: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (atomic.rs:3288)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DDA: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DDA: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DDA: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DDA: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177070 is 0 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 4 at 0x1770A0 by thread #3
+==6899== Locks held: none
+==6899==    at 0x127CFB: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (atomic.rs:3363)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DF7: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DF7: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DF7: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DF7: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x1770a0 is 48 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x177070 by thread #3
+==6899== Locks held: none
+==6899==    at 0x127D11: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (atomic.rs:3273)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DDA: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DDA: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DDA: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DDA: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177070 is 0 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 4 at 0x1770A4 by thread #3
+==6899== Locks held: none
+==6899==    at 0x127D14: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (remutex.rs:106)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DF7: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DF7: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DF7: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DF7: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x1770a4 is 52 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177078 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11E4EF: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (cell.rs:1778)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DDA: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DDA: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DDA: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DDA: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177078 is 8 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x177078 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11E4F9: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (mod.rs:1400)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DDA: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DDA: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DDA: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DDA: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177078 is 8 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177090 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD1A: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (mod.rs:2667)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DEA: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DEA: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DEA: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DEA: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177090 is 32 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177088 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD44: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (raw_vec.rs:231)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DE2: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DE2: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DE2: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DE2: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177088 is 24 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177080 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD50: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (bufwriter.rs:0)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DDE: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DDE: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DDE: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DDE: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177080 is 16 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 2 at 0x4AC5600 by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D13: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x4ac5600 is 0 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC5606 by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x4ac5606 is 6 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x177090 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD65: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (mod.rs:1419)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DEA: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DEA: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DEA: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DEA: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177090 is 32 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC5607 by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858C30: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15D105: core::fmt::num::imp::<impl core::fmt::Display for i32>::fmt (num.rs:277)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x4ac5607 is 7 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC560A by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15A960: write_str (mod.rs:1563)
+==6899==    by 0x15A960: UnknownInlinedFun (builders.rs:618)
+==6899==    by 0x15A960: core::fmt::Formatter::debug_list (mod.rs:2177)
+==6899==    by 0x113357: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==  Address 0x4ac560a is 10 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 1 at 0x4AC560A by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD26: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:45)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15D105: core::fmt::num::imp::<impl core::fmt::Display for i32>::fmt (num.rs:277)
+==6899==    by 0x117839: core::fmt::num::<impl core::fmt::Debug for i32>::fmt (num.rs:195)
+==6899==    by 0x1131D5: <&T as core::fmt::Debug>::fmt (mod.rs:2294)
+==6899==    by 0x15B8B0: {closure#0} (builders.rs:505)
+==6899==    by 0x15B8B0: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:430)
+==6899==    by 0x15B8B0: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B8B0: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B8B0: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==  Address 0x4ac560a is 10 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC560B by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15D105: core::fmt::num::imp::<impl core::fmt::Display for i32>::fmt (num.rs:277)
+==6899==    by 0x117839: core::fmt::num::<impl core::fmt::Debug for i32>::fmt (num.rs:195)
+==6899==    by 0x1131D5: <&T as core::fmt::Debug>::fmt (mod.rs:2294)
+==6899==    by 0x15B8B0: {closure#0} (builders.rs:505)
+==6899==    by 0x15B8B0: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:430)
+==6899==    by 0x15B8B0: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B8B0: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B8B0: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==  Address 0x4ac560b is 11 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 1 at 0x4AC560B by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD26: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:45)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15B89E: UnknownInlinedFun (mod.rs:1563)
+==6899==    by 0x15B89E: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:428)
+==6899==    by 0x15B89E: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B89E: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B89E: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==  Address 0x4ac560b is 11 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 2 at 0x4AC560C by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D13: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15B89E: UnknownInlinedFun (mod.rs:1563)
+==6899==    by 0x15B89E: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:428)
+==6899==    by 0x15B89E: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B89E: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B89E: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==  Address 0x4ac560c is 12 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC560F by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15B89E: UnknownInlinedFun (mod.rs:1563)
+==6899==    by 0x15B89E: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:428)
+==6899==    by 0x15B89E: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B89E: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B89E: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==  Address 0x4ac560f is 15 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC5612 by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858C30: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15B89E: UnknownInlinedFun (mod.rs:1563)
+==6899==    by 0x15B89E: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:428)
+==6899==    by 0x15B89E: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B89E: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B89E: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==  Address 0x4ac5612 is 18 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 4 at 0x4AC55A4 by thread #3
+==6899== Locks held: none
+==6899==    at 0x15CFE5: core::fmt::num::imp::<impl core::fmt::Display for i32>::fmt (num.rs:284)
+==6899==    by 0x117839: core::fmt::num::<impl core::fmt::Debug for i32>::fmt (num.rs:195)
+==6899==    by 0x1131D5: <&T as core::fmt::Debug>::fmt (mod.rs:2294)
+==6899==    by 0x15B8B0: {closure#0} (builders.rs:505)
+==6899==    by 0x15B8B0: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:430)
+==6899==    by 0x15B8B0: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B8B0: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B8B0: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==  Address 0x4ac55a4 is 20 bytes inside a block of size 40 alloc'd
+==6899==    at 0x484FD53: realloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11C123: realloc (alloc.rs:136)
+==6899==    by 0x11C123: alloc::alloc::Global::grow_impl (alloc.rs:213)
+==6899==    by 0x11C4FF: <alloc::alloc::Global as core::alloc::Allocator>::grow (alloc.rs:266)
+==6899==    by 0x114421: alloc::raw_vec::finish_grow (raw_vec.rs:492)
+==6899==    by 0x115082: alloc::raw_vec::RawVec<T,A>::grow_amortized (raw_vec.rs:414)
+==6899==    by 0x1152D7: alloc::raw_vec::RawVec<T,A>::reserve_for_push (raw_vec.rs:302)
+==6899==    by 0x11403B: alloc::vec::Vec<T,A>::push (mod.rs:1884)
+==6899==    by 0x119D5E: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:22)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 1 at 0x4AC561D by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DD26: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:45)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x1133D6: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x4ac561d is 29 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC561E by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x1133D6: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==  Address 0x4ac561e is 30 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC561F by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD00: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x4ac561f is 31 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x177098 by thread #3
+==6899== Locks held: none
+==6899==    at 0x11DB6B: _ZN3std2io8buffered9bufwriter18BufWriter$LT$W$GT$9flush_buf17h54f45a6121307e39E.llvm.8866112486369537745 (bufwriter.rs:228)
+==6899==    by 0x11DD0F: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:269)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899== 
+==6899== This conflicts with a previous write of size 1 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DF2: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DF2: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DF2: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DF2: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177098 is 40 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
 Thread 1: [1, 2, 3, 4, 5, 0, 1]
+==6899== ---Thread-Announcement------------------------------------------
+==6899== 
+==6899== Thread #4 was created
+==6899==    at 0x49BF9F3: clone (clone.S:76)
+==6899==    by 0x49C08EE: __clone_internal (clone-internal.c:83)
+==6899==    by 0x492E6D8: create_thread (pthread_create.c:295)
+==6899==    by 0x492F1FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==6899==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x12022E: std::sys::unix::thread::Thread::new (thread.rs:87)
+==6899==    by 0x116E01: std::thread::Builder::spawn_unchecked_ (mod.rs:571)
+==6899==    by 0x1164DD: std::thread::Builder::spawn_unchecked (mod.rs:457)
+==6899==    by 0x11642C: std::thread::spawn (mod.rs:389)
+==6899==    by 0x119C4F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:19)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC561E by thread #4
+==6899== Locks held: none
+==6899==    at 0x4858D13: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x15B89E: UnknownInlinedFun (mod.rs:1563)
+==6899==    by 0x15B89E: {closure#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:428)
+==6899==    by 0x15B89E: and_then<(), core::fmt::Error, (), core::fmt::builders::{impl#5}::entry_with::{closure_env#0}<core::fmt::builders::{impl#6}::entry::{closure_env#0}>> (result.rs:1320)
+==6899==    by 0x15B89E: entry_with<core::fmt::builders::{impl#6}::entry::{closure_env#0}> (builders.rs:416)
+==6899==    by 0x15B89E: core::fmt::builders::DebugSet::entry (builders.rs:505)
+==6899==    by 0x11358D: core::fmt::builders::DebugList::entries (builders.rs:695)
+==6899==    by 0x1133CD: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899== 
+==6899== This conflicts with a previous write of size 1 by thread #3
+==6899== Locks held: none
+==6899==    at 0x4858D43: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD61: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x1133D6: <[T] as core::fmt::Debug>::fmt (mod.rs:2522)
+==6899==    by 0x11535B: <alloc::vec::Vec<T,A> as core::fmt::Debug>::fmt (mod.rs:3089)
+==6899==    by 0x159DFF: core::fmt::write (rt.rs:142)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==  Address 0x4ac561e is 30 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
 Thread 2: [1, 2, 3, 4, 5, 0, 1, 2]
+==6899== ---Thread-Announcement------------------------------------------
+==6899== 
+==6899== Thread #5 was created
+==6899==    at 0x49BF9F3: clone (clone.S:76)
+==6899==    by 0x49C08EE: __clone_internal (clone-internal.c:83)
+==6899==    by 0x492E6D8: create_thread (pthread_create.c:295)
+==6899==    by 0x492F1FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==6899==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x12022E: std::sys::unix::thread::Thread::new (thread.rs:87)
+==6899==    by 0x116E01: std::thread::Builder::spawn_unchecked_ (mod.rs:571)
+==6899==    by 0x1164DD: std::thread::Builder::spawn_unchecked (mod.rs:457)
+==6899==    by 0x11642C: std::thread::spawn (mod.rs:389)
+==6899==    by 0x119C4F: thread_using_arc_mutex::main (thread_using_arc_mutex.rs:19)
+==6899==    by 0x1179DA: core::ops::function::FnOnce::call_once (function.rs:250)
+==6899==    by 0x115B1D: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x4AC5625 by thread #5
+==6899== Locks held: none
+==6899==    at 0x4858C30: memmove (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x11DD00: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (intrinsics.rs:2690)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x4ac5625 is 37 bytes inside a block of size 1,024 alloc'd
+==6899==    at 0x484A919: malloc (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:98)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:181)
+==6899==    by 0x110DCD: UnknownInlinedFun (alloc.rs:241)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:184)
+==6899==    by 0x110DCD: UnknownInlinedFun (raw_vec.rs:130)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:670)
+==6899==    by 0x110DCD: UnknownInlinedFun (mod.rs:479)
+==6899==    by 0x110DCD: UnknownInlinedFun (bufwriter.rs:115)
+==6899==    by 0x110DCD: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:109)
+==6899==    by 0x110DCD: new<std::io::stdio::StdoutRaw> (linewriter.rs:89)
+==6899==    by 0x110DCD: {closure#0} (stdio.rs:618)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:207)
+==6899==    by 0x110DCD: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:333)
+==6899==    by 0x110DCD: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DCD: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==  Block was alloc'd by thread #2
+==6899== 
 Thread 3: [1, 2, 3, 4, 5, 0, 1, 2, 3]
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 1 at 0x177098 by thread #5
+==6899== Locks held: none
+==6899==    at 0x11DB56: _ZN3std2io8buffered9bufwriter18BufWriter$LT$W$GT$9flush_buf17h54f45a6121307e39E.llvm.8866112486369537745 (bufwriter.rs:230)
+==6899==    by 0x11DD0F: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:269)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899== 
+==6899== This conflicts with a previous write of size 1 by thread #4
+==6899== Locks held: none
+==6899==    at 0x11DB6B: _ZN3std2io8buffered9bufwriter18BufWriter$LT$W$GT$9flush_buf17h54f45a6121307e39E.llvm.8866112486369537745 (bufwriter.rs:228)
+==6899==    by 0x11DD0F: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:269)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==  Address 0x177098 is 40 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x177090 by thread #5
+==6899== Locks held: none
+==6899==    at 0x11DC36: drop (bufwriter.rs:221)
+==6899==    by 0x11DC36: drop_in_place<std::io::buffered::bufwriter::{impl#1}::flush_buf::BufGuard> (mod.rs:498)
+==6899==    by 0x11DC36: _ZN3std2io8buffered9bufwriter18BufWriter$LT$W$GT$9flush_buf17h54f45a6121307e39E.llvm.8866112486369537745 (bufwriter.rs:245)
+==6899==    by 0x11DD0F: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (linewritershim.rs:269)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #4
+==6899== Locks held: none
+==6899==    at 0x11DD65: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (mod.rs:1419)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==  Address 0x177090 is 32 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177088 by thread #5
+==6899== Locks held: none
+==6899==    at 0x11DD8D: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (raw_vec.rs:231)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DE2: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DE2: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DE2: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DE2: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177088 is 24 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177080 by thread #5
+==6899== Locks held: none
+==6899==    at 0x11DD50: <std::io::buffered::linewritershim::LineWriterShim<W> as std::io::Write>::write_all (bufwriter.rs:0)
+==6899==    by 0x11E513: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (linewriter.rs:208)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DDE: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DDE: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DDE: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DDE: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x177080 is 16 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 8 at 0x177078 by thread #5
+==6899== Locks held: none
+==6899==    at 0x11E517: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (mod.rs:1400)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #4
+==6899== Locks held: none
+==6899==    at 0x11E4F9: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (mod.rs:1400)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==  Address 0x177078 is 8 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x177078 by thread #5
+==6899== Locks held: none
+==6899==    at 0x11E517: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (mod.rs:1400)
+==6899==    by 0x159E52: core::fmt::write (mod.rs:1144)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #4
+==6899== Locks held: none
+==6899==    at 0x11E4F9: <std::io::Write::write_fmt::Adapter<T> as core::fmt::Write>::write_str (mod.rs:1400)
+==6899==    by 0x159DEB: core::fmt::write (mod.rs:1118)
+==6899==    by 0x127D45: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (mod.rs:1762)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==  Address 0x177078 is 8 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 4 at 0x1770A4 by thread #5
+==6899== Locks held: none
+==6899==    at 0x127D68: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (remutex.rs:162)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 4 by thread #4
+==6899== Locks held: none
+==6899==    at 0x127D14: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (remutex.rs:106)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x1770a4 is 52 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 4 at 0x1770A4 by thread #5
+==6899== Locks held: none
+==6899==    at 0x127D68: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (remutex.rs:162)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 4 by thread #4
+==6899== Locks held: none
+==6899==    at 0x127D14: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (remutex.rs:106)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x1770a4 is 52 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during write of size 8 at 0x177070 by thread #5
+==6899== Locks held: none
+==6899==    at 0x127D6D: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (atomic.rs:3273)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #4
+==6899== Locks held: none
+==6899==    at 0x127D11: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (atomic.rs:3273)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==  Address 0x177070 is 0 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
+==6899== ----------------------------------------------------------------
+==6899== 
+==6899== Possible data race during read of size 4 at 0x1770A0 by thread #5
+==6899== Locks held: none
+==6899==    at 0x127D76: <&std::io::stdio::Stdout as std::io::Write>::write_fmt (atomic.rs:3306)
+==6899==    by 0x1281A4: std::io::stdio::_print (stdio.rs:701)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==    by 0x119EDA: __rust_try (in /home/kamal/Documents/1.Git/APTRUSTSESS01/Classes/Kamal/Oct3_MultiThread/Programs/thread_using_arc_mutex)
+==6899==    by 0x117439: std::panicking::try (panicking.rs:516)
+==6899==    by 0x117224: std::thread::Builder::spawn_unchecked_::{{closure}} (panic.rs:142)
+==6899==    by 0x11790D: core::ops::function::FnOnce::call_once{{vtable.shim}} (function.rs:250)
+==6899==    by 0x1203E4: std::sys::unix::thread::Thread::new::thread_start (boxed.rs:2007)
+==6899== 
+==6899== This conflicts with a previous write of size 8 by thread #2
+==6899== Locks held: none
+==6899==    at 0x110DF7: write<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>> (maybe_uninit.rs:494)
+==6899==    by 0x110DF7: {closure#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:335)
+==6899==    by 0x110DF7: {closure#0}<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x110DF7: std::sys_common::once::futex::Once::call (futex.rs:124)
+==6899==    by 0x10FE1C: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::remutex::ReentrantMutex<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:208)
+==6899==    by 0x10FE1C: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:332)
+==6899==    by 0x1281B4: std::io::stdio::_print (once_lock.rs:255)
+==6899==    by 0x119E7F: thread_using_arc_mutex::main::{{closure}} (thread_using_arc_mutex.rs:23)
+==6899==    by 0x115B01: std::sys_common::backtrace::__rust_begin_short_backtrace (backtrace.rs:154)
+==6899==    by 0x1173E1: std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}} (mod.rs:529)
+==6899==    by 0x112261: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once (unwind_safe.rs:272)
+==6899==    by 0x11752D: std::panicking::try::do_call (panicking.rs:552)
+==6899==  Address 0x1770a0 is 48 bytes inside data symbol "_ZN3std2io5stdio6STDOUT17h3d3df51e4034be74E.llvm.1596555766996888602"
+==6899== 
 Thread 4: [1, 2, 3, 4, 5, 0, 1, 2, 3, 4]
 Final data: [1, 2, 3, 4, 5, 0, 1, 2, 3, 4]
+==6899== 
+==6899== Use --history-level=approx or =none to gain increased speed, at
+==6899== the cost of reduced accuracy of conflicting-access information
+==6899== For lists of detected and suppressed errors, rerun with: -s
+==6899== ERROR SUMMARY: 235 errors from 42 contexts (suppressed: 52 from 14)

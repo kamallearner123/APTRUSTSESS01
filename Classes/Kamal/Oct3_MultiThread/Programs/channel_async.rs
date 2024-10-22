@@ -2,6 +2,10 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
+struct mpsc_1 {
+    
+}
+
 fn main() {
     // Create a channel
     let (tx, rx) = mpsc::channel();

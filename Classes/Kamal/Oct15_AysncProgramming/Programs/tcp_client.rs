@@ -2,24 +2,27 @@ use std::net::TcpStream;
 use std::time::Duration;
 use std::io::{Read, Write};
 use std::thread;
+use std::env;
 
 fn client_fun() {
-    let mut client = TcpStream::connect("192.168.0.112:7878").unwrap();
+    let mut client = TcpStream::connect("192.168.0.117:7878").unwrap();
     println!("Connected to the server!");
+    let mut buffer = [0;5];
     loop {
-        let mut in_msg = String::new();
-        client.read_to_string(&mut in_msg).unwrap();
-        println!("Server: {}", in_msg);
-        //client.send("Hello from client!".as_bytes()).unwrap();
+        
+        client.read(&mut buffer).unwrap();
+        println!("Server: {:?}", buffer);
         client.write("Hello from client!".as_bytes()).unwrap();
-        Duration::from_secs(1);
+        println!("Sent to server!!!");
+        thread::sleep(Duration::from_secs(1));
     }
 }
 
 
 fn main() {
     let mut clients = Vec::new();
-    for _ in 0..10 {
+    let args: Vec<String> = env::args().collect();
+    for _ in 0..i32::from(args[0])() {
         let client = thread::spawn(|| {
             client_fun();
         });
@@ -31,3 +34,4 @@ fn main() {
         client.join().unwrap();
     }
 }
+
