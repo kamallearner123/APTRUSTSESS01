@@ -1,0 +1,22 @@
+Test1: https://forms.gle/Hn3ks2F9YgpmFV957/
+
+b) Ownership System
+a) const
+b) 10
+d) text
+c) With threads and async
+b) Pattern matching
+b) let
+b) to_owned()
+c) It represents an optional value
+b) 10
+c) Vector
+b) Managing packages and dependencies
+a) [1, 2, 3]
+b) A way to define shared behavior
+a) unwrap()
+b) Returns an error if one occurs
+b) Error: Value moved
+b) let x = &mut y;
+c) Unsafe blocks
+c) It panics on out-of-bounds access
